@@ -77,6 +77,7 @@ https://raw.githubusercontent.com/viking303/nepse-data/main/nepse_daily_floorshe
 ```
 
 ## Notes
-- NEPSE trades Sunday–Thursday in Nepal (Mon–Fri UTC overlap)
+- NEPSE trades Monday-friday in Nepal
 - All prices are in Nepali Rupees (NPR)
 - Data is scraped as-is from merolagani.com — no modifications
+-This is for edutional purposes only
