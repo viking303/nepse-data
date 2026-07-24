@@ -19,6 +19,10 @@ nepse-data/
 
 One CSV per trading day. Filename: `data_YYYY-MM-DD_todays_price.csv`
 
+The source site changed its table layout partway through, so the column set differs by date range.
+
+### Schema A — up to 2026-07-22
+
 | Column | Type | Description |
 |---|---|---|
 | Date | string | Scrape date in NPT (YYYY-MM-DD) |
@@ -31,7 +35,34 @@ One CSV per trading day. Filename: `data_YYYY-MM-DD_todays_price.csv`
 | Open | float | Opening price (NPR) |
 | Qty. | integer | Total quantity traded |
 | Turnover | float | Total turnover (NPR) |
-| Page | integer | Source page number |
+
+### Schema B — from 2026-07-23 onward
+
+| Column | Type | Description |
+|---|---|---|
+| Date | string | Scrape date in NPT (YYYY-MM-DD) |
+| # | integer | Serial number |
+| Symbol | string | Stock ticker symbol (e.g. NABIL, NICA) |
+| Conf. | float | Confidence/weighted index value |
+| Open | float | Opening price (NPR) |
+| High | float | Day's highest price (NPR) |
+| Low | float | Day's lowest price (NPR) |
+| Close | float | Closing price (NPR) |
+| LTP | float | Last traded price (NPR) |
+| VWAP | float | Volume-weighted average price (NPR) |
+| Qty. | integer | Total quantity traded |
+| Prev. Close | float | Previous day's closing price (NPR) |
+| Turnover | float | Total turnover (NPR) |
+| Trans. | integer | Number of transactions |
+| Diff | float | Price difference (Close − Prev. Close) |
+| Range | float | Price range (High − Low) |
+| Diff % | float | Percentage price difference |
+| Range % | float | Percentage price range |
+| VWAP % | float | Percentage difference from VWAP |
+| 120 Days | float | 120-day moving average price |
+| 180 Days | float | 180-day moving average price |
+| 52 Weeks High | float | Highest price over the past 52 weeks (NPR) |
+| 52 Weeks Low | float | Lowest price over the past 52 weeks (NPR) |
 
 ## Data: `nepse_daily_floorsheet/`
 
@@ -80,4 +111,4 @@ https://raw.githubusercontent.com/viking303/nepse-data/main/nepse_daily_floorshe
 - NEPSE trades Monday-friday in Nepal
 - All prices are in Nepali Rupees (NPR)
 - Data is scraped as-is from merolagani.com — no modifications
--This is for edutional purposes only
+- This is for educational purposes only
