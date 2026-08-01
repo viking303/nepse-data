@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       old_date:
-        description: 'Wrong date currently in the file'
+        description: 'Wrong date currently inside the file'
         required: true
         default: '2026-08-02'
       new_date:
@@ -11,8 +11,9 @@ on:
         required: true
         default: '2026-07-31'
       filename:
-        description: 'CSV filename in daily_price_data (e.g. data_2026-07-31.csv)'
+        description: 'CSV filename in daily_price_data'
         required: true
+        default: 'data_2026-07-31_todays_price.csv'
 
 jobs:
   fix-date:
@@ -39,6 +40,6 @@ jobs:
           git config user.name "viking303"
           git config user.email "prasannaguragain22@gmail.com"
           git add .
-          git diff --cached --quiet && echo "No changes" && exit 0
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
           git commit -m "fix: correct date ${OLD} -> ${NEW}"
           git push https://x-access-token:${GH_PAT}@github.com/viking303/nepse-data.git main
